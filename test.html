@@ -1,575 +1,540 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-HK">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4689cc; -webkit-text-stroke: #4689cc}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #c27e65; -webkit-text-stroke: #c27e65}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #8cd3fe; -webkit-text-stroke: #8cd3fe}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6d7378; -webkit-text-stroke: #6d7378}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca; min-height: 16.0px}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #71c083; -webkit-text-stroke: #71c083}
-    span.s1 {font-kerning: none; background-color: #171818}
-    span.s2 {font-kerning: none; color: #8cd3fe; background-color: #171818; -webkit-text-stroke: 0px #8cd3fe}
-    span.s3 {font-kerning: none; color: #6d6d6d; background-color: #171818; -webkit-text-stroke: 0px #6d6d6d}
-    span.s4 {font-kerning: none; color: #4689cc; background-color: #171818; -webkit-text-stroke: 0px #4689cc}
-    span.s5 {font-kerning: none; color: #cacaca; background-color: #171818; -webkit-text-stroke: 0px #cacaca}
-    span.s6 {font-kerning: none; color: #c27e65; background-color: #171818; -webkit-text-stroke: 0px #c27e65}
-    span.s7 {font-kerning: none; color: #d4d4d4; background-color: #171818; -webkit-text-stroke: 0px #d4d4d4}
-    span.s8 {font-kerning: none; color: #a7c598; background-color: #171818; -webkit-text-stroke: 0px #a7c598}
-    span.s9 {font-kerning: none; color: #71c083; background-color: #171818; -webkit-text-stroke: 0px #71c083}
-    span.s10 {font-kerning: none; color: #b76ff7; background-color: #171818; -webkit-text-stroke: 0px #b76ff7}
-    span.s11 {font-kerning: none}
-    span.s12 {font-kerning: none; color: #f67c30; background-color: #171818; -webkit-text-stroke: 0px #f67c30}
-    span.s13 {font-kerning: none; color: #6d7378; background-color: #171818; -webkit-text-stroke: 0px #6d7378}
-    span.s14 {font-kerning: none; color: #36c0a0; background-color: #171818; -webkit-text-stroke: 0px #36c0a0}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>海洋環保大作戰</title>
+    <!-- 引入 Tailwind CSS 進行樣式排版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Mediapipe 手部追蹤模型 -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    
+    <style>
+        body { margin: 0; overflow: hidden; touch-action: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; user-select: none; -webkit-user-select: none; }
+        .glass-panel { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); }
+        .text-stroke { -webkit-text-stroke: 1px rgba(0,0,0,0.5); }
+        /* 隱藏不想顯示的 UI 畫面 */
+        .hidden-screen { display: none !important; }
+    </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;</span><span class="s4">html</span><span class="s5"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s1">"zh-HK"</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">meta</span><span class="s5"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s6">"UTF-8"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">meta</span><span class="s5"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s5"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">title</span><span class="s3">&gt;</span><span class="s1">海洋環保大作戰</span><span class="s3">&lt;/</span><span class="s4">title</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 引入 Tailwind CSS 進行樣式排版 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">script</span><span class="s5"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.tailwindcss.com"</span><span class="s3">&gt;&lt;/</span><span class="s4">script</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 引入 Mediapipe 手部追蹤模型 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">script</span><span class="s5"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"</span><span class="s5"> </span><span class="s2">crossorigin</span><span class="s3">=</span><span class="s1">"anonymous"</span><span class="s3">&gt;&lt;/</span><span class="s4">script</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">script</span><span class="s5"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"</span><span class="s5"> </span><span class="s2">crossorigin</span><span class="s3">=</span><span class="s1">"anonymous"</span><span class="s3">&gt;&lt;/</span><span class="s4">script</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s4">body</span><span class="s5"> </span><span class="s7">{</span><span class="s5"> </span><span class="s1">margin:</span><span class="s5"> </span><span class="s8">0</span><span class="s7">;</span><span class="s5"> </span><span class="s1">overflow:</span><span class="s5"> </span><span class="s6">hidden</span><span class="s7">;</span><span class="s5"> </span><span class="s1">touch-action:</span><span class="s5"> </span><span class="s6">none</span><span class="s7">;</span><span class="s5"> </span><span class="s1">font-family:</span><span class="s5"> </span><span class="s9">'Segoe UI'</span><span class="s7">,</span><span class="s5"> </span><span class="s6">Tahoma</span><span class="s7">,</span><span class="s5"> </span><span class="s6">Geneva</span><span class="s7">,</span><span class="s5"> </span><span class="s6">Verdana</span><span class="s7">,</span><span class="s5"> </span><span class="s6">sans-serif</span><span class="s7">;</span><span class="s5"> </span><span class="s1">user-select:</span><span class="s5"> </span><span class="s6">none</span><span class="s7">;</span><span class="s5"> </span><span class="s1">-webkit-user-select:</span><span class="s5"> </span><span class="s6">none</span><span class="s7">;</span><span class="s5"> </span><span class="s7">}</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s4">.glass-panel</span><span class="s5"> </span><span class="s7">{</span><span class="s5"> </span><span class="s1">background:</span><span class="s5"> </span><span class="s6">rgba(</span><span class="s8">255</span><span class="s7">,</span><span class="s5"> </span><span class="s8">255</span><span class="s7">,</span><span class="s5"> </span><span class="s8">255</span><span class="s7">,</span><span class="s5"> </span><span class="s8">0.15</span><span class="s6">)</span><span class="s7">;</span><span class="s5"> </span><span class="s1">backdrop-filter:</span><span class="s5"> </span><span class="s6">blur(</span><span class="s8">10px</span><span class="s6">)</span><span class="s7">;</span><span class="s5"> </span><span class="s1">border:</span><span class="s5"> </span><span class="s8">1px</span><span class="s5"> </span><span class="s6">solid</span><span class="s5"> </span><span class="s6">rgba(</span><span class="s8">255</span><span class="s7">,</span><span class="s8">255</span><span class="s7">,</span><span class="s8">255</span><span class="s7">,</span><span class="s8">0.2</span><span class="s6">)</span><span class="s7">;</span><span class="s5"> </span><span class="s7">}</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s4">.text-stroke</span><span class="s5"> </span><span class="s7">{</span><span class="s5"> </span><span class="s1">-webkit-text-stroke:</span><span class="s5"> </span><span class="s8">1px</span><span class="s5"> </span><span class="s6">rgba(</span><span class="s8">0</span><span class="s7">,</span><span class="s8">0</span><span class="s7">,</span><span class="s8">0</span><span class="s7">,</span><span class="s8">0.5</span><span class="s6">)</span><span class="s7">;</span><span class="s5"> </span><span class="s7">}</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">/* 隱藏不想顯示的 UI 畫面 */</span></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">.hidden-screen</span><span class="s5"> </span><span class="s7">{</span><span class="s5"> </span><span class="s2">display:</span><span class="s5"> </span><span class="s6">none</span><span class="s5"> </span><span class="s10">!important</span><span class="s7">;</span><span class="s5"> </span><span class="s7">}</span></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;</span><span class="s4">body</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-black text-white w-screen h-screen relative"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 相機視訊來源 (隱藏，僅供讀取) --&gt;</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">video</span><span class="s5"> </span><span class="s1">id</span><span class="s3">=</span><span class="s6">"webcam"</span><span class="s5"> </span><span class="s1">class</span><span class="s3">=</span><span class="s6">"hidden"</span><span class="s5"> </span><span class="s1">autoplay</span><span class="s5"> </span><span class="s1">playsinline</span><span class="s5"> </span><span class="s1">muted</span><span class="s3">&gt;&lt;/</span><span class="s4">video</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 遊戲主畫布 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">canvas</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"gameCanvas"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute top-0 left-0 w-full h-full z-0"</span><span class="s3">&gt;&lt;/</span><span class="s4">canvas</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- UI 覆蓋層 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"ui-container"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute inset-0 z-10 pointer-events-none flex flex-col"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;!-- 頂部資訊列 (遊戲進行時顯示) --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"game-hud"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden-screen w-full p-4 flex justify-between items-start"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"glass-panel px-6 py-3 rounded-2xl shadow-lg"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">span</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-xl font-bold text-blue-100"</span><span class="s3">&gt;</span><span class="s5">剩餘時間</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;&lt;</span><span class="s4">br</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">span</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"timer-display"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-4xl font-extrabold text-white text-stroke"</span><span class="s3">&gt;</span><span class="s5">60</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;&lt;</span><span class="s4">span</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-xl"</span><span class="s3">&gt;</span><span class="s5"> 秒</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"glass-panel px-6 py-3 rounded-2xl shadow-lg text-right"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">span</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-xl font-bold text-yellow-100"</span><span class="s3">&gt;</span><span class="s5">目前分數</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;&lt;</span><span class="s4">br</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">span</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"score-display"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-4xl font-extrabold text-yellow-400 text-stroke"</span><span class="s3">&gt;</span><span class="s5">0</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;!-- 畫面置中容器 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex-1 flex items-center justify-center w-full"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;!-- 初始權限與載入畫面 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"screen-init"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"glass-panel p-8 rounded-3xl text-center max-w-lg pointer-events-auto mx-4 shadow-[0_0_40px_rgba(0,100,255,0.3)]"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-6xl mb-4"</span><span class="s3">&gt;</span><span class="s1">🌊🐢🥤</span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">h1</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-3xl font-extrabold mb-2 text-blue-200"</span><span class="s3">&gt;</span><span class="s5">海洋環保大作戰</span><span class="s3">&lt;/</span><span class="s4">h1</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-md text-blue-100 mb-6"</span><span class="s3">&gt;</span><span class="s1">請選擇您的遊玩方式。若嵌入在 Google Sites 中，建議使用滑鼠/觸控模式。</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex flex-col space-y-4"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">button</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"btn-init-camera"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s1">📷</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s1"> 使用 AI 鏡頭追蹤</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s4">button</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">button</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"btn-init-mouse"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-6 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s1">👆</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s1"> 使用滑鼠 / 觸控遊玩</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s4">button</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;!-- 載入中畫面 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"screen-loading"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden-screen text-center pointer-events-auto glass-panel p-8 rounded-3xl"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"inline-block animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-400 mb-4"</span><span class="s3">&gt;&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">h2</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-2xl font-bold text-blue-200"</span><span class="s3">&gt;</span><span class="s5">正在載入 AI 模型...</span><span class="s3">&lt;/</span><span class="s4">h2</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-blue-100 mt-2"</span><span class="s3">&gt;</span><span class="s1">請稍候，這可能需要幾秒鐘</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;!-- 主選單畫面 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"screen-menu"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden-screen glass-panel p-8 rounded-3xl text-center max-w-lg pointer-events-auto mx-4 shadow-[0_0_40px_rgba(0,100,255,0.3)] bg-blue-900/80"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">h1</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-4xl font-extrabold mb-6 text-white text-stroke"</span><span class="s3">&gt;</span><span class="s5">準備好拯救海洋了嗎？</span><span class="s3">&lt;/</span><span class="s4">h1</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-black/40 rounded-xl p-6 mb-8 text-left space-y-4"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-lg flex items-center"</span><span class="s3">&gt;&lt;</span><span class="s4">span</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-3xl w-12 text-center drop-shadow-[0_0_10px_rgba(74,222,128,1)]"</span><span class="s3">&gt;</span><span class="s5">🥤</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s5"> </span><span class="s3">&lt;</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s5">觸碰 </span><span class="s3">&lt;</span><span class="s4">b</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-green-400"</span><span class="s3">&gt;</span><span class="s5">垃圾 (綠光)</span><span class="s3">&lt;/</span><span class="s4">b</span><span class="s3">&gt;</span><span class="s5"> 得 </span><span class="s3">&lt;</span><span class="s4">b</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-green-400"</span><span class="s3">&gt;</span><span class="s5">+3 分</span><span class="s3">&lt;/</span><span class="s4">b</span><span class="s3">&gt;&lt;/</span><span class="s4">span</span><span class="s3">&gt;&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-lg flex items-center"</span><span class="s3">&gt;&lt;</span><span class="s4">span</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-3xl w-12 text-center drop-shadow-[0_0_10px_rgba(248,113,113,1)]"</span><span class="s3">&gt;</span><span class="s5">🐢</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s5"> </span><span class="s3">&lt;</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s5">避開 </span><span class="s3">&lt;</span><span class="s4">b</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-red-400"</span><span class="s3">&gt;</span><span class="s5">海洋生物 (紅光)</span><span class="s3">&lt;/</span><span class="s4">b</span><span class="s3">&gt;</span><span class="s5"> 扣 </span><span class="s3">&lt;</span><span class="s4">b</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-red-400"</span><span class="s3">&gt;</span><span class="s5">-1 分</span><span class="s3">&lt;/</span><span class="s4">b</span><span class="s3">&gt;&lt;/</span><span class="s4">span</span><span class="s3">&gt;&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-lg flex items-center"</span><span class="s3">&gt;&lt;</span><span class="s4">span</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-3xl w-12 text-center"</span><span class="s3">&gt;</span><span class="s5">⏱️</span><span class="s3">&lt;/</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s5"> </span><span class="s3">&lt;</span><span class="s4">span</span><span class="s3">&gt;</span><span class="s5">限時 </span><span class="s3">&lt;</span><span class="s4">b</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-yellow-400"</span><span class="s3">&gt;</span><span class="s5">60 秒</span><span class="s3">&lt;/</span><span class="s4">b</span><span class="s3">&gt;&lt;/</span><span class="s4">span</span><span class="s3">&gt;&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">button</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"btn-start"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-green-500 hover:bg-green-400 text-white font-bold py-4 px-12 rounded-full text-2xl transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(34,197,94,0.6)]"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>開始遊戲</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s4">button</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;!-- 倒數畫面 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"screen-countdown"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden-screen text-center"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"countdown-text"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-9xl font-extrabold text-white text-stroke drop-shadow-2xl animate-pulse"</span><span class="s3">&gt;</span><span class="s5">3</span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;!-- 遊戲結束畫面 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"screen-gameover"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden-screen glass-panel p-10 rounded-3xl text-center max-w-lg pointer-events-auto mx-4 shadow-[0_0_50px_rgba(0,0,0,0.5)] bg-blue-900/90"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">h1</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-5xl font-extrabold mb-4 text-white text-stroke"</span><span class="s3">&gt;</span><span class="s5">時間到！</span><span class="s3">&lt;/</span><span class="s4">h1</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-2xl text-blue-200 mb-2"</span><span class="s3">&gt;</span><span class="s5">你的最終分數是</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"final-score"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-8xl font-black text-yellow-400 text-stroke mb-8 drop-shadow-lg"</span><span class="s3">&gt;</span><span class="s5">0</span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">button</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"btn-restart"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-blue-500 hover:bg-blue-400 text-white font-bold py-4 px-10 rounded-full text-xl transition-all transform hover:scale-105 shadow-lg"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>再玩一次</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s4">button</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// --- 遊戲狀態與全域變數 ---</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">const</span><span class="s1"> canvas </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'gameCanvas'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">const</span><span class="s1"> ctx </span><span class="s7">=</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">getContext</span><span class="s7">(</span><span class="s9">'2d'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">const</span><span class="s1"> video </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'webcam'</span><span class="s7">);</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> gameState </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'init'</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> score </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> timeLeft </span><span class="s7">=</span><span class="s1"> </span><span class="s12">60</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> lastTime </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> spawnTimer </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> gameTimerInterval</span><span class="s7">;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s13">// 控制模式</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> useCamera </span><span class="s7">=</span><span class="s1"> </span><span class="s10">false</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> mousePosition </span><span class="s7">=</span><span class="s1"> </span><span class="s10">null</span><span class="s7">;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 遊戲物件與特效</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> entities </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> particles </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> bubbles </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">let</span><span class="s1"> handCursors </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[];</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s13">// 資源庫</span></p>
-<p class="p7"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s10">const</span><span class="s5"> </span><span class="s14">TRASH_EMOJIS</span><span class="s5"> </span><span class="s7">=</span><span class="s5"> </span><span class="s7">[</span><span class="s1">'🥤'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🛍️'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🥫'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🗑️'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🗞️'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'📦'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🛢️'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🧴'</span><span class="s7">];</span></p>
-<p class="p7"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s10">const</span><span class="s5"> </span><span class="s14">FISH_EMOJIS</span><span class="s5"> </span><span class="s7">=</span><span class="s5"> </span><span class="s7">[</span><span class="s1">'🐟'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🐠'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🐢'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🐙'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🦀'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🐬'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🐳'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🐡'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🦑'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'🦈'</span><span class="s7">];</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// --- 畫布大小調整 ---</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> resizeCanvas</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>canvas</span><span class="s7">.</span><span class="s1">width </span><span class="s7">=</span><span class="s1"> window</span><span class="s7">.</span><span class="s1">innerWidth</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>canvas</span><span class="s7">.</span><span class="s1">height </span><span class="s7">=</span><span class="s1"> window</span><span class="s7">.</span><span class="s1">innerHeight</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>window</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'resize'</span><span class="s7">,</span><span class="s1"> resizeCanvas</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>resizeCanvas</span><span class="s7">();</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// --- 滑鼠與觸控事件 (Google Sites 備用模式) ---</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> updateMousePos</span><span class="s7">(</span><span class="s1">evt</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> rect </span><span class="s7">=</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">getBoundingClientRect</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">let</span><span class="s1"> clientX</span><span class="s7">,</span><span class="s1"> clientY</span><span class="s7">;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">evt</span><span class="s7">.</span><span class="s1">touches </span><span class="s7">&amp;&amp;</span><span class="s1"> evt</span><span class="s7">.</span><span class="s1">touches</span><span class="s7">.</span><span class="s1">length </span><span class="s7">&gt;</span><span class="s1"> </span><span class="s12">0</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>clientX </span><span class="s7">=</span><span class="s1"> evt</span><span class="s7">.</span><span class="s1">touches</span><span class="s7">[</span><span class="s12">0</span><span class="s7">].</span><span class="s1">clientX</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>clientY </span><span class="s7">=</span><span class="s1"> evt</span><span class="s7">.</span><span class="s1">touches</span><span class="s7">[</span><span class="s12">0</span><span class="s7">].</span><span class="s1">clientY</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>clientX </span><span class="s7">=</span><span class="s1"> evt</span><span class="s7">.</span><span class="s1">clientX</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>clientY </span><span class="s7">=</span><span class="s1"> evt</span><span class="s7">.</span><span class="s1">clientY</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>mousePosition </span><span class="s7">=</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>x</span><span class="s7">:</span><span class="s1"> clientX </span><span class="s7">-</span><span class="s1"> rect</span><span class="s7">.</span><span class="s1">left</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>y</span><span class="s7">:</span><span class="s1"> clientY </span><span class="s7">-</span><span class="s1"> rect</span><span class="s7">.</span><span class="s1">top</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">};</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>canvas</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'mousemove'</span><span class="s7">,</span><span class="s1"> updateMousePos</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>canvas</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'touchmove'</span><span class="s7">,</span><span class="s1"> </span><span class="s7">(</span><span class="s1">e</span><span class="s7">)</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">preventDefault</span><span class="s7">();</span><span class="s1"> updateMousePos</span><span class="s7">(</span><span class="s1">e</span><span class="s7">);</span><span class="s1"> </span><span class="s7">},</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> passive</span><span class="s7">:</span><span class="s1"> </span><span class="s10">false</span><span class="s1"> </span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>canvas</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'touchstart'</span><span class="s7">,</span><span class="s1"> </span><span class="s7">(</span><span class="s1">e</span><span class="s7">)</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">preventDefault</span><span class="s7">();</span><span class="s1"> updateMousePos</span><span class="s7">(</span><span class="s1">e</span><span class="s7">);</span><span class="s1"> </span><span class="s7">},</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> passive</span><span class="s7">:</span><span class="s1"> </span><span class="s10">false</span><span class="s1"> </span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>canvas</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'touchend'</span><span class="s7">,</span><span class="s1"> </span><span class="s7">()</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> mousePosition </span><span class="s7">=</span><span class="s1"> </span><span class="s10">null</span><span class="s7">;</span><span class="s1"> </span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>canvas</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'mouseleave'</span><span class="s7">,</span><span class="s1"> </span><span class="s7">()</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> mousePosition </span><span class="s7">=</span><span class="s1"> </span><span class="s10">null</span><span class="s7">;</span><span class="s1"> </span><span class="s7">});</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// --- UI 畫面切換控制 ---</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> switchScreen</span><span class="s7">(</span><span class="s1">screenId</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p7"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s5"> screens </span><span class="s7">=</span><span class="s5"> </span><span class="s7">[</span><span class="s1">'screen-init'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'screen-loading'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'screen-menu'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'screen-countdown'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'screen-gameover'</span><span class="s7">,</span><span class="s5"> </span><span class="s1">'game-hud'</span><span class="s7">];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>screens</span><span class="s7">.</span><span class="s1">forEach</span><span class="s7">(</span><span class="s1">id </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s1">id</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s9">'hidden-screen'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s7">(</span><span class="s1">screenId</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s1">screenId</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s9">'hidden-screen'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// --- 初始化 Mediapipe 手部追蹤 ---</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">const</span><span class="s1"> hands </span><span class="s7">=</span><span class="s1"> </span><span class="s10">new</span><span class="s1"> </span><span class="s14">Hands</span><span class="s7">({</span><span class="s1">locateFile</span><span class="s7">:</span><span class="s1"> </span><span class="s7">(</span><span class="s1">file</span><span class="s7">)</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p7"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s10">return</span><span class="s5"> </span><span class="s1">`https://cdn.jsdelivr.net/npm/@mediapipe/hands/</span><span class="s7">${</span><span class="s5">file</span><span class="s7">}</span><span class="s1">`</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>hands</span><span class="s7">.</span><span class="s1">setOptions</span><span class="s7">({</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>maxNumHands</span><span class="s7">:</span><span class="s1"> </span><span class="s12">2</span><span class="s7">,</span><span class="s1"><span class="Apple-converted-space">           </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>modelComplexity</span><span class="s7">:</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"><span class="Apple-converted-space">       </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>minDetectionConfidence</span><span class="s7">:</span><span class="s1"> </span><span class="s12">0.6</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>minTrackingConfidence</span><span class="s7">:</span><span class="s1"> </span><span class="s12">0.6</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">});</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>hands</span><span class="s7">.</span><span class="s1">onResults</span><span class="s7">((</span><span class="s1">results</span><span class="s7">)</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>handCursors </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">results</span><span class="s7">.</span><span class="s1">multiHandLandmarks</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">for</span><span class="s1"> </span><span class="s7">(</span><span class="s10">const</span><span class="s1"> landmarks </span><span class="s10">of</span><span class="s1"> results</span><span class="s7">.</span><span class="s1">multiHandLandmarks</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">const</span><span class="s1"> indexTip </span><span class="s7">=</span><span class="s1"> landmarks</span><span class="s7">[</span><span class="s12">8</span><span class="s7">];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>handCursors</span><span class="s7">.</span><span class="s1">push</span><span class="s7">({</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>x</span><span class="s7">:</span><span class="s1"> </span><span class="s7">(</span><span class="s12">1</span><span class="s1"> </span><span class="s7">-</span><span class="s1"> indexTip</span><span class="s7">.</span><span class="s1">x</span><span class="s7">)</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">width</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>y</span><span class="s7">:</span><span class="s1"> indexTip</span><span class="s7">.</span><span class="s1">y </span><span class="s7">*</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">height</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">});</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">async</span><span class="s1"> </span><span class="s10">function</span><span class="s1"> processVideoFrame</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">useCamera </span><span class="s7">&amp;&amp;</span><span class="s1"> video</span><span class="s7">.</span><span class="s1">readyState </span><span class="s7">&gt;=</span><span class="s1"> </span><span class="s12">2</span><span class="s1"> </span><span class="s7">&amp;&amp;</span><span class="s1"> </span><span class="s7">!</span><span class="s1">video</span><span class="s7">.</span><span class="s1">paused</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">await</span><span class="s1"> hands</span><span class="s7">.</span><span class="s1">send</span><span class="s7">({</span><span class="s1">image</span><span class="s7">:</span><span class="s1"> video</span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">useCamera</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>requestAnimationFrame</span><span class="s7">(</span><span class="s1">processVideoFrame</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// --- 啟動遊戲流程 ---</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 1A. 使用相機模式</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'btn-init-camera'</span><span class="s7">).</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'click'</span><span class="s7">,</span><span class="s1"> </span><span class="s10">async</span><span class="s1"> </span><span class="s7">()</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>switchScreen</span><span class="s7">(</span><span class="s9">'screen-loading'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">try</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> stream </span><span class="s7">=</span><span class="s1"> </span><span class="s10">await</span><span class="s1"> navigator</span><span class="s7">.</span><span class="s1">mediaDevices</span><span class="s7">.</span><span class="s1">getUserMedia</span><span class="s7">({</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>video</span><span class="s7">:</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> facingMode</span><span class="s7">:</span><span class="s1"> </span><span class="s9">'user'</span><span class="s7">,</span><span class="s1"> width</span><span class="s7">:</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> ideal</span><span class="s7">:</span><span class="s1"> </span><span class="s12">640</span><span class="s1"> </span><span class="s7">},</span><span class="s1"> height</span><span class="s7">:</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> ideal</span><span class="s7">:</span><span class="s1"> </span><span class="s12">480</span><span class="s1"> </span><span class="s7">}</span><span class="s1"> </span><span class="s7">}</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>video</span><span class="s7">.</span><span class="s1">srcObject </span><span class="s7">=</span><span class="s1"> stream</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">await</span><span class="s1"> video</span><span class="s7">.</span><span class="s1">play</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">await</span><span class="s1"> hands</span><span class="s7">.</span><span class="s1">initialize</span><span class="s7">();</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>useCamera </span><span class="s7">=</span><span class="s1"> </span><span class="s10">true</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>processVideoFrame</span><span class="s7">();</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>gameState </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'menu'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>switchScreen</span><span class="s7">(</span><span class="s9">'screen-menu'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>requestAnimationFrame</span><span class="s7">(</span><span class="s1">gameLoop</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">catch</span><span class="s1"> </span><span class="s7">(</span><span class="s1">error</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>console</span><span class="s7">.</span><span class="s1">error</span><span class="s7">(</span><span class="s1">error</span><span class="s7">);</span></p>
-<p class="p7"><span class="s5"><span class="Apple-converted-space">                </span>alert</span><span class="s7">(</span><span class="s1">'無法存取相機權限！如果您在 Google Sites 內，請改用「滑鼠/觸控模式」。系統已自動為您切換。'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s13">// 自動降級為觸控模式</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>startMouseMode</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">});</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 1B. 使用滑鼠/觸控模式 (Google Sites 解法)</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'btn-init-mouse'</span><span class="s7">).</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'click'</span><span class="s7">,</span><span class="s1"> startMouseMode</span><span class="s7">);</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> startMouseMode</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>useCamera </span><span class="s7">=</span><span class="s1"> </span><span class="s10">false</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>gameState </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'menu'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>switchScreen</span><span class="s7">(</span><span class="s9">'screen-menu'</span><span class="s7">);</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">// 直接啟動遊戲繪圖迴圈</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>requestAnimationFrame</span><span class="s7">(</span><span class="s1">gameLoop</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 2. 倒數與開始</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'btn-start'</span><span class="s7">).</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'click'</span><span class="s7">,</span><span class="s1"> startCountdown</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'btn-restart'</span><span class="s7">).</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s9">'click'</span><span class="s7">,</span><span class="s1"> startCountdown</span><span class="s7">);</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> startCountdown</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>gameState </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'countdown'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>switchScreen</span><span class="s7">(</span><span class="s9">'screen-countdown'</span><span class="s7">);</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>entities </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>particles </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>score </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>timeLeft </span><span class="s7">=</span><span class="s1"> </span><span class="s12">60</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>updateHUD</span><span class="s7">();</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">let</span><span class="s1"> count </span><span class="s7">=</span><span class="s1"> </span><span class="s12">3</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> countText </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'countdown-text'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>countText</span><span class="s7">.</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> count</span><span class="s7">;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> countInterval </span><span class="s7">=</span><span class="s1"> setInterval</span><span class="s7">(()</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>count</span><span class="s7">--;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">count </span><span class="s7">&gt;</span><span class="s1"> </span><span class="s12">0</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>countText</span><span class="s7">.</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> count</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>countText</span><span class="s7">.</span><span class="s1">style</span><span class="s7">.</span><span class="s1">animation </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'none'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>countText</span><span class="s7">.</span><span class="s1">offsetHeight</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>countText</span><span class="s7">.</span><span class="s1">style</span><span class="s7">.</span><span class="s1">animation </span><span class="s7">=</span><span class="s1"> </span><span class="s10">null</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>clearInterval</span><span class="s7">(</span><span class="s1">countInterval</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>startGame</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">},</span><span class="s1"> </span><span class="s12">1000</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 3. 正式開始遊戲</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> startGame</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>gameState </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'playing'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>switchScreen</span><span class="s7">(</span><span class="s9">'game-hud'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>lastTime </span><span class="s7">=</span><span class="s1"> performance</span><span class="s7">.</span><span class="s1">now</span><span class="s7">();</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>gameTimerInterval </span><span class="s7">=</span><span class="s1"> setInterval</span><span class="s7">(()</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s7">(</span><span class="s1">gameState </span><span class="s7">===</span><span class="s1"> </span><span class="s9">'playing'</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>timeLeft</span><span class="s7">--;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>updateHUD</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">if</span><span class="s7">(</span><span class="s1">timeLeft </span><span class="s7">&lt;=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">)</span><span class="s1"> endGame</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">},</span><span class="s1"> </span><span class="s12">1000</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> endGame</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>gameState </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'gameover'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>clearInterval</span><span class="s7">(</span><span class="s1">gameTimerInterval</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'final-score'</span><span class="s7">).</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> score</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>switchScreen</span><span class="s7">(</span><span class="s9">'screen-gameover'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> updateHUD</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'score-display'</span><span class="s7">).</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> score</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s9">'timer-display'</span><span class="s7">).</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> timeLeft</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// --- 遊戲邏輯與渲染 ---</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 生成實體 (加入快慢速度變化與波浪參數)</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> spawnEntity</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> isTrash </span><span class="s7">=</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">&gt;</span><span class="s1"> </span><span class="s12">0.45</span><span class="s7">;</span><span class="s1"> </span><span class="s13">// 55% 是垃圾</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> type </span><span class="s7">=</span><span class="s1"> isTrash </span><span class="s7">?</span><span class="s1"> </span><span class="s9">'trash'</span><span class="s1"> </span><span class="s7">:</span><span class="s1"> </span><span class="s9">'fish'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> emoji </span><span class="s7">=</span><span class="s1"> isTrash </span><span class="s7">?</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s14">TRASH_EMOJIS</span><span class="s7">[</span><span class="s14">Math</span><span class="s7">.</span><span class="s1">floor</span><span class="s7">(</span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s14">TRASH_EMOJIS</span><span class="s7">.</span><span class="s1">length</span><span class="s7">)]</span><span class="s1"> </span><span class="s7">:</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s14">FISH_EMOJIS</span><span class="s7">[</span><span class="s14">Math</span><span class="s7">.</span><span class="s1">floor</span><span class="s7">(</span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s14">FISH_EMOJIS</span><span class="s7">.</span><span class="s1">length</span><span class="s7">)];</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> size </span><span class="s7">=</span><span class="s1"> </span><span class="s12">60</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">40</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">let</span><span class="s1"> x</span><span class="s7">,</span><span class="s1"> y</span><span class="s7">,</span><span class="s1"> vx</span><span class="s7">,</span><span class="s1"> vy</span><span class="s7">;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">// 隨機速度倍率 (產生有快有慢的效果)</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> speedMult </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0.5</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">2.5</span><span class="s7">;</span><span class="s1"> </span><span class="s13">// 0.5x (很慢) 到 3.0x (極快)</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">// 波浪移動的參數 (僅海洋生物使用)</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">let</span><span class="s1"> baseY </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">let</span><span class="s1"> waveSpeed </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">let</span><span class="s1"> waveAmp </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">let</span><span class="s1"> timeOffset </span><span class="s7">=</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">100</span><span class="s7">;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">isTrash</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s13">// 垃圾掉落</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>x </span><span class="s7">=</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s7">(</span><span class="s1">canvas</span><span class="s7">.</span><span class="s1">width </span><span class="s7">-</span><span class="s1"> </span><span class="s12">100</span><span class="s7">)</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s12">50</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>y </span><span class="s7">=</span><span class="s1"> </span><span class="s7">-</span><span class="s12">100</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>vx </span><span class="s7">=</span><span class="s1"> </span><span class="s7">(</span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">-</span><span class="s1"> </span><span class="s12">0.5</span><span class="s7">)</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">1.5</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>vy </span><span class="s7">=</span><span class="s1"> </span><span class="s7">(</span><span class="s12">2</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">3</span><span class="s7">)</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> speedMult</span><span class="s7">;</span><span class="s1"> </span><span class="s13">// 掉落速度有快有慢</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s13">// 海洋生物從兩側游</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> fromLeft </span><span class="s7">=</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">&gt;</span><span class="s1"> </span><span class="s12">0.5</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>y </span><span class="s7">=</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s7">(</span><span class="s1">canvas</span><span class="s7">.</span><span class="s1">height </span><span class="s7">-</span><span class="s1"> </span><span class="s12">300</span><span class="s7">)</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s12">150</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>baseY </span><span class="s7">=</span><span class="s1"> y</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>waveSpeed </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0.05</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">0.05</span><span class="s7">;</span><span class="s1"> </span><span class="s13">// 波浪頻率</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>waveAmp </span><span class="s7">=</span><span class="s1"> </span><span class="s12">15</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">35</span><span class="s7">;</span><span class="s1"> <span class="Apple-converted-space">      </span></span><span class="s13">// 波浪幅度</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">fromLeft</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>x </span><span class="s7">=</span><span class="s1"> </span><span class="s7">-</span><span class="s12">100</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>vx </span><span class="s7">=</span><span class="s1"> </span><span class="s7">(</span><span class="s12">2</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">4</span><span class="s7">)</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> speedMult</span><span class="s7">;</span><span class="s1"> </span><span class="s13">// 游動速度有快有慢</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>x </span><span class="s7">=</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">width </span><span class="s7">+</span><span class="s1"> </span><span class="s12">100</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>vx </span><span class="s7">=</span><span class="s1"> </span><span class="s7">-(</span><span class="s12">2</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">4</span><span class="s7">)</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> speedMult</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>vy </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>entities</span><span class="s7">.</span><span class="s1">push</span><span class="s7">({</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>type</span><span class="s7">,</span><span class="s1"> emoji</span><span class="s7">,</span><span class="s1"> x</span><span class="s7">,</span><span class="s1"> y</span><span class="s7">,</span><span class="s1"> vx</span><span class="s7">,</span><span class="s1"> vy</span><span class="s7">,</span><span class="s1"> size</span><span class="s7">,</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>baseY</span><span class="s7">,</span><span class="s1"> waveSpeed</span><span class="s7">,</span><span class="s1"> waveAmp</span><span class="s7">,</span><span class="s1"> timeOffset</span><span class="s7">,</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>lifeTime</span><span class="s7">:</span><span class="s1"> </span><span class="s12">0</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> spawnParticle</span><span class="s7">(</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> y</span><span class="s7">,</span><span class="s1"> text</span><span class="s7">,</span><span class="s1"> color</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>particles</span><span class="s7">.</span><span class="s1">push</span><span class="s7">({</span><span class="s1"> x</span><span class="s7">:</span><span class="s1"> x</span><span class="s7">,</span><span class="s1"> y</span><span class="s7">:</span><span class="s1"> y</span><span class="s7">,</span><span class="s1"> text</span><span class="s7">:</span><span class="s1"> text</span><span class="s7">,</span><span class="s1"> color</span><span class="s7">:</span><span class="s1"> color</span><span class="s7">,</span><span class="s1"> life</span><span class="s7">:</span><span class="s1"> </span><span class="s12">1.0</span><span class="s1"> </span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s13">// 主迴圈</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">function</span><span class="s1"> gameLoop</span><span class="s7">(</span><span class="s1">timestamp</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> deltaTime </span><span class="s7">=</span><span class="s1"> timestamp </span><span class="s7">-</span><span class="s1"> lastTime</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>lastTime </span><span class="s7">=</span><span class="s1"> timestamp</span><span class="s7">;</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s13">// 1. 繪製背景</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>ctx</span><span class="s7">.</span><span class="s1">clearRect</span><span class="s7">(</span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">width</span><span class="s7">,</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">height</span><span class="s7">);</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">useCamera </span><span class="s7">&amp;&amp;</span><span class="s1"> video</span><span class="s7">.</span><span class="s1">readyState </span><span class="s7">&gt;=</span><span class="s1"> </span><span class="s12">2</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">save</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">scale</span><span class="s7">(-</span><span class="s12">1</span><span class="s7">,</span><span class="s1"> </span><span class="s12">1</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> vRatio </span><span class="s7">=</span><span class="s1"> video</span><span class="s7">.</span><span class="s1">videoWidth </span><span class="s7">/</span><span class="s1"> video</span><span class="s7">.</span><span class="s1">videoHeight</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> cRatio </span><span class="s7">=</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">width </span><span class="s7">/</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">height</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">let</span><span class="s1"> dW</span><span class="s7">,</span><span class="s1"> dH</span><span class="s7">,</span><span class="s1"> oX</span><span class="s7">,</span><span class="s1"> oY</span><span class="s7">;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">vRatio </span><span class="s7">&gt;</span><span class="s1"> cRatio</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>dH </span><span class="s7">=</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">height</span><span class="s7">;</span><span class="s1"> dW </span><span class="s7">=</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">height </span><span class="s7">*</span><span class="s1"> vRatio</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>oX </span><span class="s7">=</span><span class="s1"> </span><span class="s7">(</span><span class="s1">canvas</span><span class="s7">.</span><span class="s1">width </span><span class="s7">-</span><span class="s1"> dW</span><span class="s7">)</span><span class="s1"> </span><span class="s7">/</span><span class="s1"> </span><span class="s12">2</span><span class="s7">;</span><span class="s1"> oY </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>dW </span><span class="s7">=</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">width</span><span class="s7">;</span><span class="s1"> dH </span><span class="s7">=</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">width </span><span class="s7">/</span><span class="s1"> vRatio</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>oX </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span><span class="s1"> oY </span><span class="s7">=</span><span class="s1"> </span><span class="s7">(</span><span class="s1">canvas</span><span class="s7">.</span><span class="s1">height </span><span class="s7">-</span><span class="s1"> dH</span><span class="s7">)</span><span class="s1"> </span><span class="s7">/</span><span class="s1"> </span><span class="s12">2</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">drawImage</span><span class="s7">(</span><span class="s1">video</span><span class="s7">,</span><span class="s1"> </span><span class="s7">-</span><span class="s1">oX </span><span class="s7">-</span><span class="s1"> dW</span><span class="s7">,</span><span class="s1"> oY</span><span class="s7">,</span><span class="s1"> dW</span><span class="s7">,</span><span class="s1"> dH</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">restore</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">fillStyle </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'rgba(10, 30, 80, 0.5)'</span><span class="s7">;</span><span class="s1"> </span><span class="s13">// 深海濾鏡</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s1">// 如果沒有相機，顯示深藍色漸層背景</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">let</span><span class="s1"> grad </span><span class="s7">=</span><span class="s1"> ctx</span><span class="s7">.</span><span class="s1">createLinearGradient</span><span class="s7">(</span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">height</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>grad</span><span class="s7">.</span><span class="s1">addColorStop</span><span class="s7">(</span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s9">'#0f172a'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>grad</span><span class="s7">.</span><span class="s1">addColorStop</span><span class="s7">(</span><span class="s12">1</span><span class="s7">,</span><span class="s1"> </span><span class="s9">'#1e3a8a'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">fillStyle </span><span class="s7">=</span><span class="s1"> grad</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>ctx</span><span class="s7">.</span><span class="s1">fillRect</span><span class="s7">(</span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">width</span><span class="s7">,</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">height</span><span class="s7">);</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s13">// 2. 背景氣泡動畫</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s7">(</span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">&lt;</span><span class="s1"> </span><span class="s12">0.1</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>bubbles</span><span class="s7">.</span><span class="s1">push</span><span class="s7">({</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>x</span><span class="s7">:</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">width</span><span class="s7">,</span><span class="s1"> y</span><span class="s7">:</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">height </span><span class="s7">+</span><span class="s1"> </span><span class="s12">20</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>size</span><span class="s7">:</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">6</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s12">2</span><span class="s7">,</span><span class="s1"> speed</span><span class="s7">:</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">3</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s12">1</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>ctx</span><span class="s7">.</span><span class="s1">fillStyle </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'rgba(255, 255, 255, 0.2)'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">for</span><span class="s7">(</span><span class="s10">let</span><span class="s1"> i </span><span class="s7">=</span><span class="s1"> bubbles</span><span class="s7">.</span><span class="s1">length </span><span class="s7">-</span><span class="s1"> </span><span class="s12">1</span><span class="s7">;</span><span class="s1"> i </span><span class="s7">&gt;=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span><span class="s1"> i</span><span class="s7">--)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">let</span><span class="s1"> b </span><span class="s7">=</span><span class="s1"> bubbles</span><span class="s7">[</span><span class="s1">i</span><span class="s7">];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>b</span><span class="s7">.</span><span class="s1">y </span><span class="s7">-=</span><span class="s1"> b</span><span class="s7">.</span><span class="s1">speed</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">beginPath</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">arc</span><span class="s7">(</span><span class="s1">b</span><span class="s7">.</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> b</span><span class="s7">.</span><span class="s1">y</span><span class="s7">,</span><span class="s1"> b</span><span class="s7">.</span><span class="s1">size</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s14">PI</span><span class="s7">*</span><span class="s12">2</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">fill</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s7">(</span><span class="s1">b</span><span class="s7">.</span><span class="s1">y </span><span class="s7">&lt;</span><span class="s1"> </span><span class="s7">-</span><span class="s12">50</span><span class="s7">)</span><span class="s1"> bubbles</span><span class="s7">.</span><span class="s1">splice</span><span class="s7">(</span><span class="s1">i</span><span class="s7">,</span><span class="s1"> </span><span class="s12">1</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">// 整合所有目前的游標 (手部AI + 備用滑鼠/觸控)</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">let</span><span class="s1"> activeCursors </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[...</span><span class="s1">handCursors</span><span class="s7">];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">mousePosition</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>activeCursors</span><span class="s7">.</span><span class="s1">push</span><span class="s7">(</span><span class="s1">mousePosition</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s13">// 3. 遊戲進行邏輯</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">gameState </span><span class="s7">===</span><span class="s1"> </span><span class="s9">'playing'</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>spawnTimer </span><span class="s7">-=</span><span class="s1"> deltaTime</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">spawnTimer </span><span class="s7">&lt;=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>spawnEntity</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s13">// 生成間隔加快，讓畫面更豐富</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>spawnTimer </span><span class="s7">=</span><span class="s1"> </span><span class="s12">400</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">random</span><span class="s7">()</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">600</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">for</span><span class="s1"> </span><span class="s7">(</span><span class="s10">let</span><span class="s1"> i </span><span class="s7">=</span><span class="s1"> entities</span><span class="s7">.</span><span class="s1">length </span><span class="s7">-</span><span class="s1"> </span><span class="s12">1</span><span class="s7">;</span><span class="s1"> i </span><span class="s7">&gt;=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span><span class="s1"> i</span><span class="s7">--)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">let</span><span class="s1"> e </span><span class="s7">=</span><span class="s1"> entities</span><span class="s7">[</span><span class="s1">i</span><span class="s7">];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>e</span><span class="s7">.</span><span class="s1">lifeTime</span><span class="s7">++;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>e</span><span class="s7">.</span><span class="s1">x </span><span class="s7">+=</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">vx</span><span class="s7">;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s1">// 海洋生物加上波浪形軌跡，垃圾維持直線掉落</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">type </span><span class="s7">===</span><span class="s1"> </span><span class="s9">'fish'</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>e</span><span class="s7">.</span><span class="s1">y </span><span class="s7">=</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">baseY </span><span class="s7">+</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">sin</span><span class="s7">((</span><span class="s1">e</span><span class="s7">.</span><span class="s1">lifeTime </span><span class="s7">+</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">timeOffset</span><span class="s7">)</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">waveSpeed</span><span class="s7">)</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">waveAmp</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>e</span><span class="s7">.</span><span class="s1">y </span><span class="s7">+=</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">vy</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">save</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">translate</span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">y</span><span class="s7">);</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s13">// 繪製顯明顏色的光圈/底圖</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">beginPath</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">arc</span><span class="s7">(</span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">size </span><span class="s7">*</span><span class="s1"> </span><span class="s12">0.55</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s14">PI</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">2</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">type </span><span class="s7">===</span><span class="s1"> </span><span class="s9">'trash'</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s13">// 垃圾：綠色光圈 (提示玩家捕捉)</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>ctx</span><span class="s7">.</span><span class="s1">fillStyle </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'rgba(74, 222, 128, 0.5)'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>ctx</span><span class="s7">.</span><span class="s1">shadowColor </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'#4ade80'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>ctx</span><span class="s7">.</span><span class="s1">shadowBlur </span><span class="s7">=</span><span class="s1"> </span><span class="s12">20</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s13">// 海洋生物：紅色光圈 (提示危險)</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>ctx</span><span class="s7">.</span><span class="s1">fillStyle </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'rgba(248, 113, 113, 0.5)'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>ctx</span><span class="s7">.</span><span class="s1">shadowColor </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'#f87171'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>ctx</span><span class="s7">.</span><span class="s1">shadowBlur </span><span class="s7">=</span><span class="s1"> </span><span class="s12">20</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">fill</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">shadowBlur </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span><span class="s1"> </span><span class="s13">// 重置陰影以免影響Emoji</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s13">// 魚往左游時翻轉圖片</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">vx </span><span class="s7">&lt;</span><span class="s1"> </span><span class="s12">0</span><span class="s1"> </span><span class="s7">&amp;&amp;</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">type </span><span class="s7">===</span><span class="s1"> </span><span class="s9">'fish'</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>ctx</span><span class="s7">.</span><span class="s1">scale</span><span class="s7">(-</span><span class="s12">1</span><span class="s7">,</span><span class="s1"> </span><span class="s12">1</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">font </span><span class="s7">=</span><span class="s1"> </span><span class="s9">`</span><span class="s7">${</span><span class="s1">e</span><span class="s7">.</span><span class="s1">size</span><span class="s7">}</span><span class="s9">px sans-serif`</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">textAlign </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'center'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">textBaseline </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'middle'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">fillText</span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">emoji</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">restore</span><span class="s7">();</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s13">// 碰撞偵測</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">let</span><span class="s1"> hit </span><span class="s7">=</span><span class="s1"> </span><span class="s10">false</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">for</span><span class="s1"> </span><span class="s7">(</span><span class="s10">let</span><span class="s1"> cursor </span><span class="s10">of</span><span class="s1"> activeCursors</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s10">const</span><span class="s1"> dist </span><span class="s7">=</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s1">hypot</span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">x </span><span class="s7">-</span><span class="s1"> cursor</span><span class="s7">.</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">y </span><span class="s7">-</span><span class="s1"> cursor</span><span class="s7">.</span><span class="s1">y</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s10">const</span><span class="s1"> hitRadius </span><span class="s7">=</span><span class="s1"> </span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">size </span><span class="s7">/</span><span class="s1"> </span><span class="s12">2</span><span class="s7">)</span><span class="s1"> </span><span class="s7">+</span><span class="s1"> </span><span class="s12">30</span><span class="s7">;</span><span class="s1"> </span><span class="s13">// 稍微放寬判定</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">dist </span><span class="s7">&lt;</span><span class="s1"> hitRadius</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>hit </span><span class="s7">=</span><span class="s1"> </span><span class="s10">true</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">type </span><span class="s7">===</span><span class="s1"> </span><span class="s9">'trash'</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>score </span><span class="s7">+=</span><span class="s1"> </span><span class="s12">3</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>spawnParticle</span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">y</span><span class="s7">,</span><span class="s1"> </span><span class="s9">'+3'</span><span class="s7">,</span><span class="s1"> </span><span class="s9">'#4ade80'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>score </span><span class="s7">-=</span><span class="s1"> </span><span class="s12">1</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>spawnParticle</span><span class="s7">(</span><span class="s1">e</span><span class="s7">.</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">y</span><span class="s7">,</span><span class="s1"> </span><span class="s9">'-1'</span><span class="s7">,</span><span class="s1"> </span><span class="s9">'#f87171'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>updateHUD</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s10">break</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">hit </span><span class="s7">||</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">y </span><span class="s7">&gt;</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">height </span><span class="s7">+</span><span class="s1"> </span><span class="s12">150</span><span class="s1"> </span><span class="s7">||</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">x </span><span class="s7">&lt;</span><span class="s1"> </span><span class="s7">-</span><span class="s12">150</span><span class="s1"> </span><span class="s7">||</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">x </span><span class="s7">&gt;</span><span class="s1"> canvas</span><span class="s7">.</span><span class="s1">width </span><span class="s7">+</span><span class="s1"> </span><span class="s12">150</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>entities</span><span class="s7">.</span><span class="s1">splice</span><span class="s7">(</span><span class="s1">i</span><span class="s7">,</span><span class="s1"> </span><span class="s12">1</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">// 4. 繪製互動游標 (手部或滑鼠)</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">for</span><span class="s1"> </span><span class="s7">(</span><span class="s10">let</span><span class="s1"> cursor </span><span class="s10">of</span><span class="s1"> activeCursors</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">beginPath</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">arc</span><span class="s7">(</span><span class="s1">cursor</span><span class="s7">.</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> cursor</span><span class="s7">.</span><span class="s1">y</span><span class="s7">,</span><span class="s1"> </span><span class="s12">25</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s14">PI</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">2</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">fillStyle </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'rgba(56, 189, 248, 0.4)'</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">fill</span><span class="s7">();</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">beginPath</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">arc</span><span class="s7">(</span><span class="s1">cursor</span><span class="s7">.</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> cursor</span><span class="s7">.</span><span class="s1">y</span><span class="s7">,</span><span class="s1"> </span><span class="s12">10</span><span class="s7">,</span><span class="s1"> </span><span class="s12">0</span><span class="s7">,</span><span class="s1"> </span><span class="s14">Math</span><span class="s7">.</span><span class="s14">PI</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">2</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">fillStyle </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'#fff'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">fill</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">strokeStyle </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'#0284c7'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">lineWidth </span><span class="s7">=</span><span class="s1"> </span><span class="s12">3</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>ctx</span><span class="s7">.</span><span class="s1">stroke</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">// 5. 繪製得分/扣分特效</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">for</span><span class="s1"> </span><span class="s7">(</span><span class="s10">let</span><span class="s1"> i </span><span class="s7">=</span><span class="s1"> particles</span><span class="s7">.</span><span class="s1">length </span><span class="s7">-</span><span class="s1"> </span><span class="s12">1</span><span class="s7">;</span><span class="s1"> i </span><span class="s7">&gt;=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span><span class="s1"> i</span><span class="s7">--)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">let</span><span class="s1"> p </span><span class="s7">=</span><span class="s1"> particles</span><span class="s7">[</span><span class="s1">i</span><span class="s7">];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>p</span><span class="s7">.</span><span class="s1">life </span><span class="s7">-=</span><span class="s1"> deltaTime </span><span class="s7">/</span><span class="s1"> </span><span class="s12">1000</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>p</span><span class="s7">.</span><span class="s1">y </span><span class="s7">-=</span><span class="s1"> </span><span class="s12">3</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">p</span><span class="s7">.</span><span class="s1">life </span><span class="s7">&lt;=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>particles</span><span class="s7">.</span><span class="s1">splice</span><span class="s7">(</span><span class="s1">i</span><span class="s7">,</span><span class="s1"> </span><span class="s12">1</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">globalAlpha </span><span class="s7">=</span><span class="s1"> p</span><span class="s7">.</span><span class="s1">life</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">font </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'900 45px sans-serif'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">textAlign </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'center'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">textBaseline </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'middle'</span><span class="s7">;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">strokeStyle </span><span class="s7">=</span><span class="s1"> </span><span class="s9">'#fff'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">lineWidth </span><span class="s7">=</span><span class="s1"> </span><span class="s12">8</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">strokeText</span><span class="s7">(</span><span class="s1">p</span><span class="s7">.</span><span class="s1">text</span><span class="s7">,</span><span class="s1"> p</span><span class="s7">.</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> p</span><span class="s7">.</span><span class="s1">y</span><span class="s7">);</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">fillStyle </span><span class="s7">=</span><span class="s1"> p</span><span class="s7">.</span><span class="s1">color</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">fillText</span><span class="s7">(</span><span class="s1">p</span><span class="s7">.</span><span class="s1">text</span><span class="s7">,</span><span class="s1"> p</span><span class="s7">.</span><span class="s1">x</span><span class="s7">,</span><span class="s1"> p</span><span class="s7">.</span><span class="s1">y</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>ctx</span><span class="s7">.</span><span class="s1">globalAlpha </span><span class="s7">=</span><span class="s1"> </span><span class="s12">1.0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>requestAnimationFrame</span><span class="s7">(</span><span class="s1">gameLoop</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s11"></span><br></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
+<body class="bg-black text-white w-screen h-screen relative">
+
+    <!-- 相機視訊來源 (隱藏，僅供讀取) -->
+    <video id="webcam" class="hidden" autoplay playsinline muted></video>
+
+    <!-- 遊戲主畫布 -->
+    <canvas id="gameCanvas" class="absolute top-0 left-0 w-full h-full z-0"></canvas>
+
+    <!-- UI 覆蓋層 -->
+    <div id="ui-container" class="absolute inset-0 z-10 pointer-events-none flex flex-col">
+        
+        <!-- 頂部資訊列 (遊戲進行時顯示) -->
+        <div id="game-hud" class="hidden-screen w-full p-4 flex justify-between items-start">
+            <div class="glass-panel px-6 py-3 rounded-2xl shadow-lg">
+                <span class="text-xl font-bold text-blue-100">剩餘時間</span><br>
+                <span id="timer-display" class="text-4xl font-extrabold text-white text-stroke">60</span><span class="text-xl"> 秒</span>
+            </div>
+            <div class="glass-panel px-6 py-3 rounded-2xl shadow-lg text-right">
+                <span class="text-xl font-bold text-yellow-100">目前分數</span><br>
+                <span id="score-display" class="text-4xl font-extrabold text-yellow-400 text-stroke">0</span>
+            </div>
+        </div>
+
+        <!-- 畫面置中容器 -->
+        <div class="flex-1 flex items-center justify-center w-full">
+            
+            <!-- 初始權限與載入畫面 -->
+            <div id="screen-init" class="glass-panel p-8 rounded-3xl text-center max-w-lg pointer-events-auto mx-4 shadow-[0_0_40px_rgba(0,100,255,0.3)]">
+                <div class="text-6xl mb-4">🌊🐢🥤</div>
+                <h1 class="text-3xl font-extrabold mb-2 text-blue-200">海洋環保大作戰</h1>
+                <p class="text-md text-blue-100 mb-6">請選擇您的遊玩方式。若嵌入在 Google Sites 中，建議使用滑鼠/觸控模式。</p>
+                
+                <div class="flex flex-col space-y-4">
+                    <button id="btn-init-camera" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                        <span>📷</span> 使用 AI 鏡頭追蹤
+                    </button>
+                    
+                    <button id="btn-init-mouse" class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-6 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                        <span>👆</span> 使用滑鼠 / 觸控遊玩
+                    </button>
+                </div>
+            </div>
+
+            <!-- 載入中畫面 -->
+            <div id="screen-loading" class="hidden-screen text-center pointer-events-auto glass-panel p-8 rounded-3xl">
+                <div class="inline-block animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-400 mb-4"></div>
+                <h2 class="text-2xl font-bold text-blue-200">正在載入 AI 模型...</h2>
+                <p class="text-blue-100 mt-2">請稍候，這可能需要幾秒鐘</p>
+            </div>
+
+            <!-- 主選單畫面 -->
+            <div id="screen-menu" class="hidden-screen glass-panel p-8 rounded-3xl text-center max-w-lg pointer-events-auto mx-4 shadow-[0_0_40px_rgba(0,100,255,0.3)] bg-blue-900/80">
+                <h1 class="text-4xl font-extrabold mb-6 text-white text-stroke">準備好拯救海洋了嗎？</h1>
+                <div class="bg-black/40 rounded-xl p-6 mb-8 text-left space-y-4">
+                    <p class="text-lg flex items-center"><span class="text-3xl w-12 text-center drop-shadow-[0_0_10px_rgba(74,222,128,1)]">🥤</span> <span>觸碰 <b class="text-green-400">垃圾 (綠光)</b> 得 <b class="text-green-400">+3 分</b></span></p>
+                    <p class="text-lg flex items-center"><span class="text-3xl w-12 text-center drop-shadow-[0_0_10px_rgba(248,113,113,1)]">🐢</span> <span>避開 <b class="text-red-400">海洋生物 (紅光)</b> 扣 <b class="text-red-400">-1 分</b></span></p>
+                    <p class="text-lg flex items-center"><span class="text-3xl w-12 text-center">⏱️</span> <span>限時 <b class="text-yellow-400">60 秒</b></span></p>
+                </div>
+                <button id="btn-start" class="bg-green-500 hover:bg-green-400 text-white font-bold py-4 px-12 rounded-full text-2xl transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(34,197,94,0.6)]">
+                    開始遊戲
+                </button>
+            </div>
+
+            <!-- 倒數畫面 -->
+            <div id="screen-countdown" class="hidden-screen text-center">
+                <div id="countdown-text" class="text-9xl font-extrabold text-white text-stroke drop-shadow-2xl animate-pulse">3</div>
+            </div>
+
+            <!-- 遊戲結束畫面 -->
+            <div id="screen-gameover" class="hidden-screen glass-panel p-10 rounded-3xl text-center max-w-lg pointer-events-auto mx-4 shadow-[0_0_50px_rgba(0,0,0,0.5)] bg-blue-900/90">
+                <h1 class="text-5xl font-extrabold mb-4 text-white text-stroke">時間到！</h1>
+                <p class="text-2xl text-blue-200 mb-2">你的最終分數是</p>
+                <div id="final-score" class="text-8xl font-black text-yellow-400 text-stroke mb-8 drop-shadow-lg">0</div>
+                <button id="btn-restart" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-4 px-10 rounded-full text-xl transition-all transform hover:scale-105 shadow-lg">
+                    再玩一次
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- 遊戲狀態與全域變數 ---
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const video = document.getElementById('webcam');
+
+        let gameState = 'init'; 
+        let score = 0;
+        let timeLeft = 60;
+        let lastTime = 0;
+        let spawnTimer = 0;
+        let gameTimerInterval;
+        
+        // 控制模式
+        let useCamera = false;
+        let mousePosition = null;
+
+        // 遊戲物件與特效
+        let entities = [];
+        let particles = [];
+        let bubbles = [];
+        let handCursors = []; 
+
+        // 資源庫
+        const TRASH_EMOJIS = ['🥤', '🛍️', '🥫', '🗑️', '🗞️', '📦', '🛢️', '🧴'];
+        const FISH_EMOJIS = ['🐟', '🐠', '🐢', '🐙', '🦀', '🐬', '🐳', '🐡', '🦑', '🦈'];
+
+        // --- 畫布大小調整 ---
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // --- 滑鼠與觸控事件 (Google Sites 備用模式) ---
+        function updateMousePos(evt) {
+            const rect = canvas.getBoundingClientRect();
+            let clientX, clientY;
+            
+            if (evt.touches && evt.touches.length > 0) {
+                clientX = evt.touches[0].clientX;
+                clientY = evt.touches[0].clientY;
+            } else {
+                clientX = evt.clientX;
+                clientY = evt.clientY;
+            }
+            
+            mousePosition = {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        canvas.addEventListener('mousemove', updateMousePos);
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); updateMousePos(e); }, { passive: false });
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); updateMousePos(e); }, { passive: false });
+        canvas.addEventListener('touchend', () => { mousePosition = null; });
+        canvas.addEventListener('mouseleave', () => { mousePosition = null; });
+
+        // --- UI 畫面切換控制 ---
+        function switchScreen(screenId) {
+            const screens = ['screen-init', 'screen-loading', 'screen-menu', 'screen-countdown', 'screen-gameover', 'game-hud'];
+            screens.forEach(id => {
+                document.getElementById(id).classList.add('hidden-screen');
+            });
+            if(screenId) {
+                document.getElementById(screenId).classList.remove('hidden-screen');
+            }
+        }
+
+        // --- 初始化 Mediapipe 手部追蹤 ---
+        const hands = new Hands({locateFile: (file) => {
+            return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+        }});
+        hands.setOptions({
+            maxNumHands: 2,           
+            modelComplexity: 0,       
+            minDetectionConfidence: 0.6,
+            minTrackingConfidence: 0.6
+        });
+
+        hands.onResults((results) => {
+            handCursors = [];
+            if (results.multiHandLandmarks) {
+                for (const landmarks of results.multiHandLandmarks) {
+                    const indexTip = landmarks[8];
+                    handCursors.push({
+                        x: (1 - indexTip.x) * canvas.width,
+                        y: indexTip.y * canvas.height
+                    });
+                }
+            }
+        });
+
+        async function processVideoFrame() {
+            if (useCamera && video.readyState >= 2 && !video.paused) {
+                await hands.send({image: video});
+            }
+            if (useCamera) {
+                requestAnimationFrame(processVideoFrame);
+            }
+        }
+
+        // --- 啟動遊戲流程 ---
+        
+        // 1A. 使用相機模式
+        document.getElementById('btn-init-camera').addEventListener('click', async () => {
+            switchScreen('screen-loading');
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } } 
+                });
+                video.srcObject = stream;
+                await video.play();
+                await hands.initialize();
+                
+                useCamera = true;
+                processVideoFrame();
+                
+                gameState = 'menu';
+                switchScreen('screen-menu');
+                requestAnimationFrame(gameLoop);
+            } catch (error) {
+                console.error(error);
+                alert('無法存取相機權限！如果您在 Google Sites 內，請改用「滑鼠/觸控模式」。系統已自動為您切換。');
+                // 自動降級為觸控模式
+                startMouseMode();
+            }
+        });
+
+        // 1B. 使用滑鼠/觸控模式 (Google Sites 解法)
+        document.getElementById('btn-init-mouse').addEventListener('click', startMouseMode);
+
+        function startMouseMode() {
+            useCamera = false;
+            gameState = 'menu';
+            switchScreen('screen-menu');
+            // 直接啟動遊戲繪圖迴圈
+            requestAnimationFrame(gameLoop);
+        }
+
+        // 2. 倒數與開始
+        document.getElementById('btn-start').addEventListener('click', startCountdown);
+        document.getElementById('btn-restart').addEventListener('click', startCountdown);
+
+        function startCountdown() {
+            gameState = 'countdown';
+            switchScreen('screen-countdown');
+            
+            entities = [];
+            particles = [];
+            score = 0;
+            timeLeft = 60;
+            updateHUD();
+
+            let count = 3;
+            const countText = document.getElementById('countdown-text');
+            countText.innerText = count;
+
+            const countInterval = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countText.innerText = count;
+                    countText.style.animation = 'none';
+                    countText.offsetHeight; 
+                    countText.style.animation = null;
+                } else {
+                    clearInterval(countInterval);
+                    startGame();
+                }
+            }, 1000);
+        }
+
+        // 3. 正式開始遊戲
+        function startGame() {
+            gameState = 'playing';
+            switchScreen('game-hud');
+            lastTime = performance.now();
+            
+            gameTimerInterval = setInterval(() => {
+                if(gameState === 'playing') {
+                    timeLeft--;
+                    updateHUD();
+                    if(timeLeft <= 0) endGame();
+                }
+            }, 1000);
+        }
+
+        function endGame() {
+            gameState = 'gameover';
+            clearInterval(gameTimerInterval);
+            document.getElementById('final-score').innerText = score;
+            switchScreen('screen-gameover');
+        }
+
+        function updateHUD() {
+            document.getElementById('score-display').innerText = score;
+            document.getElementById('timer-display').innerText = timeLeft;
+        }
+
+        // --- 遊戲邏輯與渲染 ---
+
+        // 生成實體 (加入快慢速度變化與波浪參數)
+        function spawnEntity() {
+            const isTrash = Math.random() > 0.45; // 55% 是垃圾
+            const type = isTrash ? 'trash' : 'fish';
+            const emoji = isTrash ? 
+                TRASH_EMOJIS[Math.floor(Math.random() * TRASH_EMOJIS.length)] : 
+                FISH_EMOJIS[Math.floor(Math.random() * FISH_EMOJIS.length)];
+            
+            const size = 60 + Math.random() * 40; 
+            let x, y, vx, vy;
+            
+            // 隨機速度倍率 (產生有快有慢的效果)
+            const speedMult = 0.5 + Math.random() * 2.5; // 0.5x (很慢) 到 3.0x (極快)
+
+            // 波浪移動的參數 (僅海洋生物使用)
+            let baseY = 0;
+            let waveSpeed = 0;
+            let waveAmp = 0;
+            let timeOffset = Math.random() * 100;
+
+            if (isTrash) {
+                // 垃圾掉落
+                x = Math.random() * (canvas.width - 100) + 50;
+                y = -100;
+                vx = (Math.random() - 0.5) * 1.5; 
+                vy = (2 + Math.random() * 3) * speedMult; // 掉落速度有快有慢
+            } else {
+                // 海洋生物從兩側游
+                const fromLeft = Math.random() > 0.5;
+                y = Math.random() * (canvas.height - 300) + 150;
+                baseY = y;
+                waveSpeed = 0.05 + Math.random() * 0.05; // 波浪頻率
+                waveAmp = 15 + Math.random() * 35;       // 波浪幅度
+
+                if (fromLeft) {
+                    x = -100;
+                    vx = (2 + Math.random() * 4) * speedMult; // 游動速度有快有慢
+                } else {
+                    x = canvas.width + 100;
+                    vx = -(2 + Math.random() * 4) * speedMult;
+                }
+                vy = 0; 
+            }
+
+            entities.push({ 
+                type, emoji, x, y, vx, vy, size, 
+                baseY, waveSpeed, waveAmp, timeOffset, 
+                lifeTime: 0 
+            });
+        }
+
+        function spawnParticle(x, y, text, color) {
+            particles.push({ x: x, y: y, text: text, color: color, life: 1.0 });
+        }
+
+        // 主迴圈
+        function gameLoop(timestamp) {
+            const deltaTime = timestamp - lastTime;
+            lastTime = timestamp;
+
+            // 1. 繪製背景
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (useCamera && video.readyState >= 2) {
+                ctx.save();
+                ctx.scale(-1, 1);
+                const vRatio = video.videoWidth / video.videoHeight;
+                const cRatio = canvas.width / canvas.height;
+                let dW, dH, oX, oY;
+                
+                if (vRatio > cRatio) {
+                    dH = canvas.height; dW = canvas.height * vRatio;
+                    oX = (canvas.width - dW) / 2; oY = 0;
+                } else {
+                    dW = canvas.width; dH = canvas.width / vRatio;
+                    oX = 0; oY = (canvas.height - dH) / 2;
+                }
+                ctx.drawImage(video, -oX - dW, oY, dW, dH);
+                ctx.restore();
+                ctx.fillStyle = 'rgba(10, 30, 80, 0.5)'; // 深海濾鏡
+            } else {
+                // 如果沒有相機，顯示深藍色漸層背景
+                let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                grad.addColorStop(0, '#0f172a');
+                grad.addColorStop(1, '#1e3a8a');
+                ctx.fillStyle = grad;
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 2. 背景氣泡動畫
+            if(Math.random() < 0.1) {
+                bubbles.push({
+                    x: Math.random() * canvas.width, y: canvas.height + 20,
+                    size: Math.random() * 6 + 2, speed: Math.random() * 3 + 1
+                });
+            }
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            for(let i = bubbles.length - 1; i >= 0; i--) {
+                let b = bubbles[i];
+                b.y -= b.speed;
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, b.size, 0, Math.PI*2);
+                ctx.fill();
+                if(b.y < -50) bubbles.splice(i, 1);
+            }
+
+            // 整合所有目前的游標 (手部AI + 備用滑鼠/觸控)
+            let activeCursors = [...handCursors];
+            if (mousePosition) {
+                activeCursors.push(mousePosition);
+            }
+
+            // 3. 遊戲進行邏輯
+            if (gameState === 'playing') {
+                spawnTimer -= deltaTime;
+                if (spawnTimer <= 0) {
+                    spawnEntity();
+                    // 生成間隔加快，讓畫面更豐富
+                    spawnTimer = 400 + Math.random() * 600; 
+                }
+
+                for (let i = entities.length - 1; i >= 0; i--) {
+                    let e = entities[i];
+                    e.lifeTime++;
+                    e.x += e.vx;
+                    
+                    // 海洋生物加上波浪形軌跡，垃圾維持直線掉落
+                    if (e.type === 'fish') {
+                        e.y = e.baseY + Math.sin((e.lifeTime + e.timeOffset) * e.waveSpeed) * e.waveAmp;
+                    } else {
+                        e.y += e.vy;
+                    }
+
+                    ctx.save();
+                    ctx.translate(e.x, e.y);
+                    
+                    // 繪製顯明顏色的光圈/底圖
+                    ctx.beginPath();
+                    ctx.arc(0, 0, e.size * 0.55, 0, Math.PI * 2);
+                    if (e.type === 'trash') {
+                        // 垃圾：綠色光圈 (提示玩家捕捉)
+                        ctx.fillStyle = 'rgba(74, 222, 128, 0.5)';
+                        ctx.shadowColor = '#4ade80';
+                        ctx.shadowBlur = 20;
+                    } else {
+                        // 海洋生物：紅色光圈 (提示危險)
+                        ctx.fillStyle = 'rgba(248, 113, 113, 0.5)';
+                        ctx.shadowColor = '#f87171';
+                        ctx.shadowBlur = 20;
+                    }
+                    ctx.fill();
+                    ctx.shadowBlur = 0; // 重置陰影以免影響Emoji
+
+                    // 魚往左游時翻轉圖片
+                    if (e.vx < 0 && e.type === 'fish') {
+                        ctx.scale(-1, 1);
+                    }
+                    
+                    ctx.font = `${e.size}px sans-serif`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(e.emoji, 0, 0);
+                    ctx.restore();
+
+                    // 碰撞偵測
+                    let hit = false;
+                    for (let cursor of activeCursors) {
+                        const dist = Math.hypot(e.x - cursor.x, e.y - cursor.y);
+                        const hitRadius = (e.size / 2) + 30; // 稍微放寬判定
+
+                        if (dist < hitRadius) {
+                            hit = true;
+                            if (e.type === 'trash') {
+                                score += 3;
+                                spawnParticle(e.x, e.y, '+3', '#4ade80');
+                            } else {
+                                score -= 1;
+                                spawnParticle(e.x, e.y, '-1', '#f87171');
+                            }
+                            updateHUD();
+                            break; 
+                        }
+                    }
+
+                    if (hit || e.y > canvas.height + 150 || e.x < -150 || e.x > canvas.width + 150) {
+                        entities.splice(i, 1);
+                    }
+                }
+            }
+
+            // 4. 繪製互動游標 (手部或滑鼠)
+            for (let cursor of activeCursors) {
+                ctx.beginPath();
+                ctx.arc(cursor.x, cursor.y, 25, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(56, 189, 248, 0.4)'; 
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(cursor.x, cursor.y, 10, 0, Math.PI * 2);
+                ctx.fillStyle = '#fff';
+                ctx.fill();
+                ctx.strokeStyle = '#0284c7';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+            }
+
+            // 5. 繪製得分/扣分特效
+            for (let i = particles.length - 1; i >= 0; i--) {
+                let p = particles[i];
+                p.life -= deltaTime / 1000;
+                p.y -= 3; 
+
+                if (p.life <= 0) {
+                    particles.splice(i, 1);
+                } else {
+                    ctx.globalAlpha = p.life;
+                    ctx.font = '900 45px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 8;
+                    ctx.strokeText(p.text, p.x, p.y);
+                    
+                    ctx.fillStyle = p.color;
+                    ctx.fillText(p.text, p.x, p.y);
+                    ctx.globalAlpha = 1.0;
+                }
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+    </script>
 </body>
 </html>
